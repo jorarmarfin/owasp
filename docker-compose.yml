@@ -1,0 +1,22 @@
+version: '3'
+services:
+  owasp:
+    container_name: srv-zap
+    image: owasp/zap2docker-stable
+    ports:
+      - 8080:8090
+    volumes:
+      - ./data:/home/zap
+    networks: 
+      - net-owasp
+    cmd: 
+networks:
+  net-owasp:
+
+
+#docker run -u zap -p 8080:8080 -p 8090:8090 -v /home/lmayta/Docker:/home/zap -i owasp/zap2docker-stable zap-webswing.sh
+# Stable:
+# docker run -u zap -p 8080:8080 -p 8090:8090 -i owasp/zap2docker-stable zap-webswing.sh
+# Weekly:
+# docker run -u zap -p 8080:8080 -p 8090:8090 -i owasp/zap2docker-weekly zap-webswing.sh
+# http://localhost:8080/zap
